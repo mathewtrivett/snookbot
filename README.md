@@ -14,9 +14,14 @@ Options (pick an emoji response): {
     "stormy": ⛈
 }
 
-If you choose rainy or stormy, then @snookbot will private message your snook buddy.
+If you choose rainy or stormy, then @snookbot will ask you "Would you like me to let your Snook buddy know?" { Sure | No thanks | No, but could you let X person know } if sure snookbot private message your snook buddy.
 
     "Looks like {name} is having a { rainy | stormy } day today, maybe check the weather with them in an hour or so? Perhaps its just a shower."
+
+If you have more than a few consecutive stormy or rainy days, then @snookbot will message your line manager.
+
+    "{ name } has had { X } stormy days out of the past two weeks. Perhaps book in some time with them to see they are ok?",
+    "{ name } has had { X } rainy days in a row this last week. Perhaps book in some time with them to see they are ok?"
 
 Question 2: "Are you interruptable this morning?"
 Options: { Yes | No }
@@ -114,7 +119,6 @@ OR
 *Mat* is having a 🌧 day
 ```
 
-
 **Scenario: Getting a weather report by studio**
 
 + Given you want to get a weather report for the mood in a Snook studio
@@ -124,7 +128,35 @@ OR
 Example weather reports:
 
 ```
-"It's going to be a sunny, sunny day in {location}",
-"Cloudy with a chance of rain in {location}",
+min = sunny, mode = sunny, max = sunny - 
+min = cloudy, mode = sunny, max = sunny - 
+min = rainy, mode = sunny, max = sunny - 
+min = stormy, mode = sunny, max = sunny - 
+
+min = cloudy, mode = cloudy, max = sunny - 
+min = cloudy, mode = cloudy, max = cloudy -
+min = rainy, mode = cloudy, max = sunny - 
+min = stormy, mode = cloudy, max = sunny - 
+
+"It's going to be a sunny, sunny day in {location}", 
+"Cloudy with a chance of rain in {location}", 
 "It might be a little stormy later in {location}"
 ```
+
+
+#### Next free
+
+**Scenario: Find out when one or more co-workers are next free for a check in**
+
++ Given that you want to organise a meeting with people
++ When you ask @snookbot to "When are @name, @name, and @me next free?"
++ Then @snookbot will ask you for more details
+    + In what time frame?
+        + This week
+        + The next two weeks
+        + This month
+    + For how long?
+        + 20 minutes
+        + 50 minutes
++ Then @snookbot will look through everyone's calendars to find the first slot in our calendars when everyone is free.
++ And ask whether you want to put it people's diaries.
