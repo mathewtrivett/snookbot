@@ -4,32 +4,37 @@
 ### Check in
 
 **Scenario: @snookbot checks in with you**
-Given it's a working day
-When you log into Slack
-And this is the first time you've stayed active for more than 15 minutes today
-Then @snookbot will check in with you in a DM
+
++ Given it's a working day
++ When you log into Slack
++ And this is the first time you've stayed active for more than 15 minutes today
++ Then @snookbot will check in with you in a DM
 
 
 **Scenario: You check in with @snookbot**
-Given you want to update your status with @snookbot and the team
-When you DM or @mention snookbot and say "Just checking in", use the phrases "checking in", "checkin" or "check in"
-Then @snookbot will run the checkin script
+
++ Given you want to update your status with @snookbot and the team
++ When you DM or @mention snookbot and say "Just checking in", use the phrases "checking in", "checkin" or "check in"
++ Then @snookbot will run the checkin script
 
 
 **Scenario: The end of the day**
-Given its the end of the day
-Then @snookbot will clear all statuses and set up for the next day
+
++ Given its the end of the day
++ Then @snookbot will clear all statuses and set up for the next day
 
 
 **Scenario: You havn't checked in today (you're on holiday or not logged in)**
-Given you havn't checked in today
-Then @snookbot won't store any data for you
+
++ Given you havn't checked in today
++ Then @snookbot won't store any data for you
 
 
 **Scenario: Finding out who is interruptable today**
-Given you want to find out who is interruptable
-When you @mention snookbot and ask "Who is interruptable today?"
-Then @snookbot will send you a list of who is interruptable and when.
+
++ Given you want to find out who is interruptable
++ When you @mention snookbot and ask "Who is interruptable today?"
++ Then @snookbot will send you a list of who is interruptable and when.
 
 Example response:
 ```"Looks like:"
@@ -41,18 +46,20 @@ Example response:
 
 
 **Scenario: Finding out who is interruptable right now**
-Given you want to find out who is interruptable right now for a call
-When you @mention snookbot and ask "Who is interruptable now?"
-Then @snookbot will send you a list of people who are active
-And whose interruptable status matches the current time of day.
+
++ Given you want to find out who is interruptable right now for a call
++ When you @mention snookbot and ask "Who is interruptable now?"
++ Then @snookbot will send you a list of people who are active
++ And whose interruptable status matches the current time of day.
 
 ```Example reponse: **Mat** and **Victoria** are interruptable right now.```
 
 
 **Scenario: Getting a Snook weather report**
-Given you want to get a weather report for the mood in Snook
-When you ask @snookbot "What's the weather like today?"
-Then @snookbot will see how people are feeling and prepare a weather report.
+
++ Given you want to get a weather report for the mood in Snook
++ When you ask @snookbot "What's the weather like today?"
++ Then @snookbot will see how people are feeling and prepare a weather report.
 
 Example weather reports:
 ```
@@ -79,9 +86,10 @@ OR
 
 
 **Scenario: Getting a weather report by studio**
-Given you want to get a weather report for the mood in a Snook studio
-When you ask @snookbot "What's the weather like in {location}?"
-Then @snookbot will see how people are feeling and prepare a weather report.
+
++ Given you want to get a weather report for the mood in a Snook studio
++ When you ask @snookbot "What's the weather like in {location}?"
++ Then @snookbot will see how people are feeling and prepare a weather report.
 
 Example weather reports:
 
