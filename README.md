@@ -1,18 +1,18 @@
 
 ## Features
 
-### Checkin in
+### Check in
 
 **Scenario: @snookbot checks in with you**
 Given it's a working day
 When you log into Slack
 And this is the first time you've stayed active for more than 15 minutes today
-Then @snookbot will check in with you
+Then @snookbot will check in with you in a DM
 
 
 **Scenario: You check in with @snookbot**
-Given you want to update your status
-When you @mention snookbot and say "Just checking in" or use the work "checking in"
+Given you want to update your status with @snookbot and the team
+When you DM or @mention snookbot and say "Just checking in", use the phrases "checking in", "checkin" or "check in"
 Then @snookbot will run the checkin script
 
 
@@ -31,11 +31,13 @@ Given you want to find out who is interruptable
 When you @mention snookbot and ask "Who is interruptable today?"
 Then @snookbot will send you a list of who is interruptable and when.
 
-"Looks like:"
+Example response:
+```"Looks like:"
 
 **Lili** is **This Morning**
 **Mat** is **This Afternoon**
 **Izzy** is **All Day**
+```
 
 
 **Scenario: Finding out who is interruptable right now**
@@ -44,7 +46,7 @@ When you @mention snookbot and ask "Who is interruptable now?"
 Then @snookbot will send you a list of people who are active
 And whose interruptable status matches the current time of day.
 
-Example reponse: **Mat** and **Victoria** are interruptable right now.
+```Example reponse: **Mat** and **Victoria** are interruptable right now.```
 
 
 **Scenario: Getting a Snook weather report**
@@ -53,14 +55,27 @@ When you ask @snookbot "What's the weather like today?"
 Then @snookbot will see how people are feeling and prepare a weather report.
 
 Example weather reports:
-
+```
 "It's going to be a sunny, sunny day",
 "Looks like a warm day"
 "Cloudy with a chance of rain",
 "Generally sunny but there might be a few stormy clouds"
+```
++ I have questions here, maybe this isn't appropriate...we don't want to stigmatise people who.
++ What do we need to think about legally and from a HR perspective of people making their mental health visible like this?
++ People can chose not to...?
 
-I have questions here, maybe this isn't appropriate...we don't want to stigmatise people who.
-I suppose with the analogy, the weather is the weather,
+Alternatively:
+```
+*Lili* is having a 🌞 day
+*Mat* is have a 🌧 day
+*Emma* is having a 🌞
+
+OR
+
+*Lili* and *Emma* are having a 🌞 day
+*Mat* is having a 🌧 day
+```
 
 
 **Scenario: Getting a weather report by studio**
@@ -70,10 +85,12 @@ Then @snookbot will see how people are feeling and prepare a weather report.
 
 Example weather reports:
 
-Example weather reports:
-"It's going to be a sunny, sunny day",
-"Cloudy with a chance of rain",
-"It might be a little stormy later"
+```
+"It's going to be a sunny, sunny day in {location}",
+"Cloudy with a chance of rain in {location}",
+"It might be a little stormy later in {location}"
+```
+
 
 
 #### Snookbot checkin script
