@@ -1,0 +1,30 @@
+html {
+    font-family: sans-serif;
+    box-sizing: border-box;
+    size: 1000%;
+}
+
+section {
+    float: left;
+    width: 20%;
+    border-right: 1px solid #ccc;
+}
+
+div {
+    text-align: center;
+    padding: 0.5em;
+}
+
+div h3 {
+    text-transform: uppercase;
+    font-size: 1em;
+    color: #989898;
+}
+
+section div:nth-child(even) {
+    background-color: #F5F5F5;
+}
+
+#feeling span {
+    font-size: 3.5em;
+}
