@@ -3,13 +3,40 @@
 
 ### Check in
 
+#### Snookbot checkin script
+
+```
+Question 1: "{ Morning | Afternoon | Howdy | Other random greetings } {name}, { how are you feeling? | are you ok? }"
+Options (pick an emoji response): {
+    "sunny" : 🌞,
+    "cloudy": 🌥,
+    "rainy": 🌧,
+    "stormy": ⛈
+}
+
+If you choose rainy or stormy, then @snookbot will private message your snook buddy.
+
+    "Looks like {name} is having a { rainy | stormy } day today, maybe check the weather with them in an hour or so? Perhaps its just a shower."
+
+Question 2: "Are you interruptable this morning?"
+Options: { Yes | No }
+
+Question 3:"Are you interruptable this afternoon?"
+Options: { Yes | No }
+
+This will output: { This morning | In the afternoon | All day (if both yes)| Not today (if both no) }
+
+Option 4: "What are you thinking about today?"
+Options: What ever you want.
+```
+
+
 **Scenario: @snookbot checks in with you**
 
 + Given it's a working day
 + When you log into Slack
 + And this is the first time you've stayed active for more than 15 minutes today
 + Then @snookbot will check in with you in a DM
-
 
 **Scenario: You check in with @snookbot**
 
@@ -30,6 +57,8 @@
 + Then @snookbot won't store any data for you
 
 
+#### Interruptable
+
 **Scenario: Finding out who is interruptable today**
 
 + Given you want to find out who is interruptable
@@ -44,7 +73,6 @@ Example response:
 **Izzy** is **All Day**
 ```
 
-
 **Scenario: Finding out who is interruptable right now**
 
 + Given you want to find out who is interruptable right now for a call
@@ -54,6 +82,8 @@ Example response:
 
 ```Example reponse: **Mat** and **Victoria** are interruptable right now.```
 
+
+#### Weather report
 
 **Scenario: Getting a Snook weather report**
 
@@ -97,33 +127,4 @@ Example weather reports:
 "It's going to be a sunny, sunny day in {location}",
 "Cloudy with a chance of rain in {location}",
 "It might be a little stormy later in {location}"
-```
-
-
-
-#### Snookbot checkin script
-
-```
-Question 1: "{ Morning | Afternoon | Howdy | Other random greetings } {name}, how are you feeling?"
-Options (pick an emoji response): {
-    "sunny" : 🌞,
-    "cloudy": 🌥,
-    "rainy": 🌧,
-    "stormy": ⛈
-}
-
-If you choose rainy or stormy, then @snookbot will private message your snook buddy.
-
-    "Looks like {name} is having a { rainy | stormy } day today, maybe check the weather with them in an hour or so? Perhaps its just a shower."
-
-Question 2: "Are you interruptable this morning?"
-Options: { Yes | No }
-
-Question 3:"Are you interruptable this afternoon?"
-Options: { Yes | No }
-
-This will output: { This morning | In the afternoon | All day (if both yes)| Not today (if both no) }
-
-Option 4: "What are you thinking about today?"
-Options: What ever you want.
 ```
